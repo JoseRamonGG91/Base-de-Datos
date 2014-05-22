@@ -24,7 +24,7 @@ public class Main extends javax.swing.JFrame {
     ModeloTabla modelo = new ModeloTabla();
     public Main() {
         initComponents();
-
+        Guardar.setEnabled(false);
         modelo.setDataList(list1);
         jTable1.setModel(modelo);
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new ClienteRender());
@@ -183,10 +183,18 @@ public class Main extends javax.swing.JFrame {
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
         panel1.Limpiar();
         nuevo = true;
+        Nuevo.setEnabled(false);
+        Borrar.setEnabled(false);
+        Editar.setEnabled(false);
+        Guardar.setEnabled(true);
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         nuevo = false;
+        Borrar.setEnabled(false);
+        Nuevo.setEnabled(false);
+        Editar.setEnabled(false);
+        Guardar.setEnabled(true);
     }//GEN-LAST:event_EditarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
@@ -218,11 +226,16 @@ public class Main extends javax.swing.JFrame {
         if (nuevo) {
             list1.add(v); 
             modelo.fireTableRowsInserted(list1.size()-1, list1.size()-1);
-
+            
         } else {
             list1.set(selectedRow, v); 
             modelo.fireTableRowsUpdated(selectedRow, selectedRow);
+            
         }
+        Nuevo.setEnabled(true);
+        Editar.setEnabled(true);
+        Borrar.setEnabled(true);
+        Guardar.setEnabled(false);
     }//GEN-LAST:event_GuardarActionPerformed
 
     /**

@@ -74,6 +74,7 @@ public class Panel extends javax.swing.JPanel {
         v.setCantidad(Integer.valueOf(jTextField4.getText()));
         v.setCliNum(cliente);
         v.setJueNum(juego);
+
     }
     
     public void Limpiar() {
